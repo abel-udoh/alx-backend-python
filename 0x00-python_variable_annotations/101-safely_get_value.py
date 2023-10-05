@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """ More involved type annotations """
 
-from typing import Dict, TypeVar, Optional
+from typing import Dict, TypeVar, Optional, Union, Mapping, Any
 
-K = TypeVar('K')  # Type variable for dictionary keys
-V = TypeVar('V')  # Type variable for dictionary values
+T = TypeVar('T')
+Res = Union[Any, T]
+Def = Union[T, None]
 
-def safely_get_value(dct: Dict[K, V], key: K, default: Optional[V] = None) -> V:
+
+def safely_get_value(dct: Mapping, key: Any, default: Def = None) -> Res:
     """
     Safely get a value from a dictionary by key, with an optional
     default value.
